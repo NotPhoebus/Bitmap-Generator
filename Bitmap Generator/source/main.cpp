@@ -23,9 +23,9 @@ int main()
     {
         for (uint8_t x = 0; x < width; x++)
             for (uint8_t y = 0; y < height; y++) {
-                image[x][y][RED] = x % 255;
-                image[x][y][GREEN] = y % 255;
-                image[x][y][BLUE] = x * y % 255;
+                image[x][y][RED] = (x >= width / 2 && i >= 1) ? 255 : 0;
+                image[x][y][GREEN] = (y >= height / 2 && i >= 2) ? 255 : 0;
+                image[x][y][BLUE] = (x >= width / 2 || y >= height / 2 && i >= 3) ? 255 : 0;
             }
         bitmap((uint8_t*)image, height, width, filename);
         std::cout << filename << " generated!\n";
